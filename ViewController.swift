@@ -73,10 +73,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let items = try contex.fetch(StoryEntity.fetchRequest())
             print(items.count)
             for r in items {
-                //print("dhe pass " + r.password!)
-                //guard let values = r.stories else { return }
-                //for i in values {
-                  //  print(i)
                 print(r.assignee?.email)
             }
             }
@@ -140,8 +136,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     vc.title = "Stories assigned"
                     vc.text = userName
                     navigationController?.pushViewController(vc, animated: true)
-                    print("email :::: " + userName)
-                    print("email n config ::::: " + ConfigClass.email)
                 }else {
                     showAlert()
                 }
