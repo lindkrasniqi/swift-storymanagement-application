@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  StoryApplication
-//
-//  Created by Eduard Spahija on 9/19/22.
-//
-
 import UIKit
 import CoreData
 
@@ -17,24 +10,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*
-        do {
-        let emps = try contex.fetch(EmployeeEntity.fetchRequest())
-        for x in emps {
-            contex.delete(x)
-            try contex.save()
-            print("U fshi")
-        }
-        let stories = try contex.fetch(StoryEntity.fetchRequest())
-            for i in stories {
-                contex.delete(i)
-                try contex.save()
-                print("U fshi storu")
-            }
-        }
-        catch {}
-        */
-         // Do any additional setup after loading the view.
     }
     
     @IBAction func signInUser () {
@@ -112,8 +87,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func checkIfUsernameAndPasswordMatch (userName: String, password: String) {
-        print("username val " + userName)
-        print("password val " + password)
         var result = NSArray()
         
         let fetchReq = NSFetchRequest<NSFetchRequestResult>(entityName: "EmployeeEntity")
