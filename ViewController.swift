@@ -12,9 +12,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
     }
     
-    @IBAction func signInUser () {
-        //if (email.elementsEqual("admin") && password.elementsEqual("admin")) {
-        checkIfUsernameAndPasswordMatch(userName: emailField.text!, password: passwordField.text!)
+    @IBAction func signInUser () {        checkIfUsernameAndPasswordMatch(userName: emailField.text!, password: passwordField.text!)
             self.emailField.text = ""
             self.passwordField.text = ""
     }
