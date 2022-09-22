@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="EmployeeEntity" representedClassName=".EmployeeEntity" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="last_name" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="position" optional="YES" attributeType="String"/>
+        <relationship name="stories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StoryEntity" inverseName="assignee" inverseEntity="StoryEntity"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="email"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="StoryEntity" representedClassName=".StoryEntity" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="story_description" optional="YES" attributeType="String"/>
+        <attribute name="subject" optional="YES" attributeType="String"/>
+        <relationship name="assignee" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmployeeEntity" inverseName="stories" inverseEntity="EmployeeEntity"/>
+    </entity>
+    <elements>
+        <element name="EmployeeEntity" positionX="-63" positionY="-18" width="128" height="134"/>
+        <element name="StoryEntity" positionX="-54" positionY="45" width="128" height="89"/>
+    </elements>
+</model>
