@@ -140,8 +140,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     vc.title = "Stories assigned"
                     vc.text = userName
                     navigationController?.pushViewController(vc, animated: true)
-                    print("email :::: " + userName)
-                    print("email n config ::::: " + ConfigClass.email)
                 }else {
                     showAlert()
                 }
