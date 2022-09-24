@@ -1,10 +1,3 @@
-//
-//  StoryEntity+CoreDataProperties.swift
-//  StoryApplication
-//
-//  Created by Eduard Spahija on 9/21/22.
-//
-//
 
 import Foundation
 import CoreData
@@ -19,6 +12,7 @@ extension StoryEntity {
     @NSManaged public var id: Int32
     @NSManaged public var subject: String?
     @NSManaged public var story_description: String?
+    @NSManaged public var dateTime: Date?
     @NSManaged public var assignee: EmployeeEntity?
 
 }

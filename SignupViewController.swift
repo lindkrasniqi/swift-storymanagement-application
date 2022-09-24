@@ -1,10 +1,3 @@
-//
-//  SignupViewController.swift
-//  StoryApplication
-//
-//  Created by Eduard Spahija on 9/19/22.
-//
-
 import UIKit
 import CoreData
 
@@ -42,7 +35,6 @@ class SignupViewController: UIViewController {
             
             do {
                 try contex.save()
-                print("Po mdokettt osht ka bon")
                 let vc = storyboard?.instantiateViewController(withIdentifier: "login") as! ViewController
                 vc.title = "Stories assigned"
                 navigationController?.pushViewController(vc, animated: true)
@@ -59,14 +51,8 @@ class SignupViewController: UIViewController {
     }
     
     func showAlert() {
-
-            // create the alert
             let alert = UIAlertController(title: "Error message", message: "Passwords do not match .", preferredStyle: UIAlertController.Style.alert)
-
-            // add an action (button)
             alert.addAction(UIAlertAction(title: "Try again", style: UIAlertAction.Style.default, handler: nil))
-
-            // show the alert
             self.present(alert, animated: true, completion: nil)
         }
 }

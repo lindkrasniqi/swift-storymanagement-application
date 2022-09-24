@@ -15,6 +15,7 @@
         </uniquenessConstraints>
     </entity>
     <entity name="StoryEntity" representedClassName=".StoryEntity" syncable="YES">
+        <attribute name="dateTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="story_description" optional="YES" attributeType="String"/>
         <attribute name="subject" optional="YES" attributeType="String"/>
@@ -22,6 +23,6 @@
     </entity>
     <elements>
         <element name="EmployeeEntity" positionX="-63" positionY="-18" width="128" height="134"/>
-        <element name="StoryEntity" positionX="-54" positionY="45" width="128" height="89"/>
+        <element name="StoryEntity" positionX="-54" positionY="45" width="128" height="104"/>
     </elements>
 </model>

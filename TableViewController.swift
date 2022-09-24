@@ -21,20 +21,17 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         print(text)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.frame = view.bounds
+        //tableView.frame = view.bounds
+        tableView.rowHeight = 115
         getStoriesAssigned(email: ConfigClass.email)
         // Do any additional setup after loading the view.
     }
     
     lazy var storyItem = StoryEntity(context: returnContext())
 
-    
-    
-    
     func getStoriesAssigned (email: String) {
         
         var result = [StoryEntity]()
-        
         do {
         let items = try returnContext().fetch(StoryEntity.fetchRequest())
             print(items.count)
@@ -42,7 +39,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 if (r.assignee?.email != nil) {
                     if (r.assignee!.email!.elementsEqual(email)) {
                         result.append(r)
-                        print("Mrena funksionit n table view " + r.subject!)
                     }
                 }
             }
@@ -58,17 +54,18 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        print("Subject " + model[indexPath.row].subject!)
-        cell.textLabel?.text = model[indexPath.row].subject
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let result = dateFormatter.string(from: model[indexPath.row].dateTime!)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
+        cell.subject.text! = model[indexPath.row].subject!
+        cell.story_description.text! = model[indexPath.row].story_description!
+        cell.dateTime.text! = result
         return cell
         
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        print("Length " + String(model.count))
         return model.count
         
     }
@@ -77,7 +74,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.deselectRow(at: indexPath, animated: true)
         
         storyItem = model[indexPath.row]
-        print("Mrena viewwww didselect " + storyItem.story_description!)
         let sheet = UIAlertController(title: "edit", message: nil, preferredStyle: .actionSheet)
         
         sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -96,19 +92,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.present(sheet, animated: true)
     }
-    
-    
-    func showAlert () {
-            // create the alert
-            let alert = UIAlertController(title: "Error message", message: "Credentials are wrong.", preferredStyle: UIAlertController.Style.alert)
 
-            // add an action (button)
-            alert.addAction(UIAlertAction(title: "Try again", style: UIAlertAction.Style.default, handler: nil))
-
-            // show the alert
-            self.present(alert, animated: true, completion: nil)
-    }
-    
     func changeView() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "editTask") as! EditTaskViewController
         vc.title = "Edit task"

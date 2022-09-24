@@ -1,10 +1,3 @@
-//
-//  EmployeeTableViewController.swift
-//  StoryApplication
-//
-//  Created by Eduard Spahija on 9/22/22.
-//
-
 import UIKit
 import CoreData
 
@@ -26,15 +19,19 @@ class EmployeeTableViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         tableView.frame = view.bounds
+        tableView.rowHeight = 115
         getAllEmployees()
         // Do any additional setup after loading the view.
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = model[indexPath.row].email
+        let empItem = model[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomEmployeeTableViewCell
+        let fullName = empItem.name! + " " + empItem.last_name!
+        cell.fullName.text = fullName
+        cell.email.text = empItem.email!
+        cell.position.text = empItem.position!
         return cell
         
     }
@@ -57,8 +54,6 @@ class EmployeeTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        print("Length " + String(model.count))
         return model.count
         
     }

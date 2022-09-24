@@ -1,10 +1,3 @@
-//
-//  AddTaskViewController.swift
-//  StoryApplication
-//
-//  Created by Eduard Spahija on 9/21/22.
-//
-
 import UIKit
 import CoreData
 
@@ -27,6 +20,7 @@ class AddTaskViewController: UIViewController {
         let story = StoryEntity(context: contex)
         story.subject = subject.text!
         story.story_description = story_description.text!
+        story.dateTime = Date()
         getPersonByEmail(email: email.text!).addToStories(story)
         do {
             try contex.save()
@@ -34,7 +28,7 @@ class AddTaskViewController: UIViewController {
             vc.title = "Stories Assigned"
             navigationController?.pushViewController(vc, animated: true)
         }catch {
-            print("Something happened")
+            print("An error happened")
         }
         
     }
@@ -51,8 +45,6 @@ class AddTaskViewController: UIViewController {
         
         do {
             result = try contex.fetch(fetchReq) as NSArray
-            print("hini n do add task")
-            print("Res count n add task" + String(result.count))
             if (result.count > 0) {
                 empEntity = result.firstObject as! EmployeeEntity
                 return empEntity
@@ -69,20 +61,8 @@ class AddTaskViewController: UIViewController {
     }
     
     func showAlert (message: String) {
-            
-            print("show aler ne add task")
-            // create the alert
             let alert = UIAlertController(title: "Error message", message: message, preferredStyle: UIAlertController.Style.alert)
-
-            // add an action (button)
             alert.addAction(UIAlertAction(title: "Try again", style: UIAlertAction.Style.default, handler: nil))
-
-            // show the alert
             self.present(alert, animated: true, completion: nil)
     }
-    
-    func helloWorld () {
-        print("helloooo")
-    }
-
 }
