@@ -38,35 +38,11 @@ class EmployeeTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        empItem = model[indexPath.row]
-        
-        let sheet = UIAlertController(title: "Delete Employee", message: nil, preferredStyle: .actionSheet)
-        
-        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        sheet.addAction(UIAlertAction(title: "Delete", style: .destructive,
-            handler: { _ in
-            self.deleteItem(empItem: self.empItem)
-        }))
-        
-        self.present(sheet, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.count
         
-    }
-    
-    func deleteItem (empItem: EmployeeEntity) {
-        do {
-            returnContext().delete(empItem)
-            try returnContext().save()
-            getAllEmployees()
-        }
-        catch {
-            print("Something went wrong")
-        }
     }
     
     func getAllEmployees ()  {

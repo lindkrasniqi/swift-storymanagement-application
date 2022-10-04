@@ -50,7 +50,9 @@ class EditProfileViewController: UIViewController {
         
         do {
             try returnContext().save()
-            showAlert(message: "Success Data Changed", actionTitle: "OK")
+            let vc = storyboard?.instantiateViewController(withIdentifier: "table") as! TableViewController
+            vc.title = "Stories Assigned"
+            navigationController?.pushViewController(vc, animated: true)
         }catch {
             showAlert(message: "Something went wrong", actionTitle: "Try again")
         }
