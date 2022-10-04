@@ -4,7 +4,7 @@ Main objectives of this application were to get familiar with Swift UIKit librar
 
 As an internal database for this application iOS core data was used.
 
-Main features of this applications are basic ones for an application like Login, Create account, Add story's to existing users if you are an admin, edit story's, change information and edit profie.
+Main features of this applications are basic ones for an application like Login, Create account, Add story's, edit story's, change information and edit profie.
 
 Some of main views in application are : 
 
