@@ -13,5 +13,5 @@ Some of main views in application are :
 </div> 
 <div style="display:flex; flex-direction:row; justify-content:space-around;">  
 <img style="margin-right:20px;" src = "https://user-images.githubusercontent.com/74973065/193947777-97fe5410-58e6-455e-8c4d-0060ae27df76.png" width = 200/>
-<img src = "https://user-images.githubusercontent.com/74973065/193947777-97fe5410-58e6-455e-8c4d-0060ae27df76.png" width = 200/>
+<img src = "https://user-images.githubusercontent.com/74973065/194052777-15166e1a-d87c-49eb-9987-91392a05f5ba.png" width = 200/>
 </div> 
